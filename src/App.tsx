@@ -1,17 +1,20 @@
 import React from 'react';
-import { DayCalendar } from './DayCalendar';
+import { IntlProvider } from 'react-intl';
+
+import { DayCalendar } from './components/DayCalendar';
 import Header from './Header';
-import {IntlProvider} from 'react-intl'
 
 const messagesInFrench = {
   myMessage: "Aujourd'hui, c'est le {ts, date, ::yyyyMMdd}",
-}
+};
 
-const App = () => {
+type Props = Record<string, never>;
+
+const App: React.FunctionComponent<Props> = () => {
   return (
-    <IntlProvider messages={messagesInFrench} locale="fr" defaultLocale="en"> 
-    <Header />
-    <DayCalendar />
+    <IntlProvider defaultLocale="en" locale="fr" messages={messagesInFrench}>
+      <Header />
+      <DayCalendar />
     </IntlProvider>
   );
 };
